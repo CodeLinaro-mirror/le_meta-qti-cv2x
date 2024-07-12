@@ -20,7 +20,7 @@ EXTRA_OECMAKE += "-DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_LIB_DIR:PATH=${baselib} \
     -DCOMPILE_TOOLS=ON \
     "
-FILES_${PN} += "${datadir}/* \
+FILES:${PN} += "${datadir}/* \
                ${datadir}/fastrtps/* \
                ${datadir}/fastrtps/cmake/* \
                ${prefix}/tools/fastdds/* \
