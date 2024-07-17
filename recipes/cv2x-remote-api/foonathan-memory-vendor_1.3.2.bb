@@ -19,16 +19,16 @@ EXTRA_OECMAKE += "-DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_MEMORY_TOOLS=OFF \
     "
 
-FILES_${PN} += "${datadir}/foonathan_memory/* \
+FILES:${PN} += "${datadir}/foonathan_memory/* \
                ${datadir}/foonathan_memory_vendor/* \
                ${datadir}/foonathan_memory_vendor/cmake/* \
                ${libdir}/foonathan_memory/cmake/* \
                ${libdir}/ibfoonathan_memory.so \
     "
-do_install_append() {
+do_install:append() {
     ln -sf libfoonathan_memory-0.7.3.so ${D}${libdir}/ibfoonathan_memory.so
 }
 SOLIBS = ".so"
 SOLIBS += ".so.*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} += "dev-so"
+INSANE_SKIP:${PN} += "dev-so"
