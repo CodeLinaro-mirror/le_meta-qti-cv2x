@@ -11,4 +11,5 @@ PACKAGES = ' \
 
 RDEPENDS_packagegroup-qti-cv2x = "\
     cv2x-opensource \
+    cv2x-remote-api \
     "
