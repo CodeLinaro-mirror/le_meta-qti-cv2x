@@ -2,8 +2,8 @@ SUMMARY = "C-V2X API remoting via IVSS"
 DESCRIPTION = "provide telSDK C-V2X API to remote CPU via commonapi/vsomeip"
 #common license
 
-LICENSE = "BSD-3-Clause & BSD-2-Clause"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
+LICENSE = "BSD-3-Clause-Clear"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause-Clear;md5=3771d4920bd6cdb8cbdf1e8344489ee0"
 
 DEPENDS += "telux-lib commonapi3 common-api-c++-someip fastdds cv2x-remote-gen"
 
