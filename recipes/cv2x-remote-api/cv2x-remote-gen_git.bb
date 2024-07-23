@@ -1,8 +1,10 @@
 SUMMARY = "C-V2X API remoting via IVSS - IDL generated library"
 DESCRIPTION = "provide telSDK C-V2X API to remote CPU via commonapi/vsomeip"
 #common license
-LICENSE = "BSD-3-Clause & BSD-2-Clause"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
+LICENSE = "MPL-2.0 & Apache-2.0"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MPL-2.0;md5=815ca599c9df247a0c7f619bab123dad \
+                    file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10 \
+"
 
 DEPENDS = "glib-2.0 commonapi3 common-api-c++-someip fastdds"
 
