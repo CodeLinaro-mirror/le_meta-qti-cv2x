@@ -18,12 +18,24 @@ S = "${WORKDIR}/git"
 
 EXTRA_OECMAKE += "-DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_LIB_DIR:PATH=${baselib} \
-    -DCOMPILE_TOOLS=ON \
+    -DCOMPILE_TOOLS=OFF \
+    -DEPROSIMA_BUILD=OFF \
+    -DCHECK_DOCUMENTATION=OFF \
+    -DBUILD_DOCUMENTATION=OFF \
+    -DSQLITE3_SUPPORT=OFF \
+    -DENABLE_OLD_LOG_MACROS=OFF \
+    -DFASTDDS_STATISTICS=OFF \
+    -DCOMPILE_EXAMPLES=OFF \
+    -DINSTALL_EXAMPLES=OFF \
+    -DINSTALL_TOOLS=OFF \
+    -DINTERNAL_DEBUG=OFF \
+    -DIS_THIRDPARTY_BOOST_OK=OFF \
     "
 FILES:${PN} += "${datadir}/* \
                ${datadir}/fastrtps/* \
-               ${datadir}/fastrtps/cmake/* \
-               ${prefix}/tools/fastdds/* \
-               ${bindir}/fast-discovery-server-1.0.1 \
     "
+do_install:append() {
+    rm -rf ${D}/usr/lib/foonathan_memory
+}
+
 SYSROOT_DIRS += " ${bindir} "

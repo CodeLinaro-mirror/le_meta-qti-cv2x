@@ -79,3 +79,16 @@ index 7881850df..c1edb7193 100644
 
  project(fast-discovery-server VERSION 1.0.1 LANGUAGES CXX)
 
+diff --git a/src/cpp/rtps/transport/tcp/RTCPHeader.h b/src/cpp/rtps/transport/tcp/RTCPHeader.h
+index 4a0aa7239..50dac30c0 100644
+--- a/src/cpp/rtps/transport/tcp/RTCPHeader.h
++++ b/src/cpp/rtps/transport/tcp/RTCPHeader.h
+@@ -364,7 +364,9 @@ public:
+                 Endianness_t::BIGEND;
+         if (internal_endian != msg_endian)
+         {
++#if ENABLE_OLD_LOG_MACROS_
+             logWarning(RTCP_MSG, "endianness of rtcp header is not consistent with CDRMsg");
++#endif
+             return;
+         }
