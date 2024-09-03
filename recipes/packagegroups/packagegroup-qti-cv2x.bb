@@ -26,7 +26,7 @@ RDEPENDS:${PN} = "\
     "
 
 RDEPENDS:packagegroup-qti-telematics-cv2x = "\
-    cv2x-opensource \
+    cv2x-proxy \
     ${@oe.utils.conditional('CV2X_REMOTE', 'True', 'cv2x-remote-api', '', d)} \
     ${@oe.utils.conditional('CV2X_ITS', 'True', '${MLPREFIX}packagegroup-qti-telematics-cv2x-its', '', d)} \
     "
