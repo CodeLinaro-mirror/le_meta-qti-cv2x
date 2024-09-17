@@ -1,15 +1,15 @@
 SUMMARY = "foonathan_memory_vendor"
 SECTION = "libs"
 LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 
 PROVIDES = "foonathan_memory_vendor"
 PR = "r0"
 
 inherit cmake lib_package pkgconfig
 
-SRCREV = "48e5e2c9a1e4948c80e11d5aec78e23dc27b6714"
-SRC_URI = "git://github.com/eProsima/foonathan_memory_vendor.git;protocol=https;branch=master \
+SRCREV = "0f0775770fd1c506fa9c5ad566bd6ba59659db66"
+SRC_URI = "git://github.com/foonathan/memory;protocol=https;branch=main \
     "
 S = "${WORKDIR}/git"
 
@@ -17,11 +17,12 @@ EXTRA_OECMAKE += "-DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_LIB_DIR:PATH=${baselib} \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_MEMORY_TOOLS=OFF \
+    -DFOONATHAN_MEMORY_BUILD_TESTS=OFF \
+    -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF \
+    -DFOONATHAN_MEMORY_BUILD_TOOLS=OFF \
     "
 
 FILES:${PN} += "${datadir}/foonathan_memory/* \
-               ${datadir}/foonathan_memory_vendor/* \
-               ${datadir}/foonathan_memory_vendor/cmake/* \
                ${libdir}/foonathan_memory/cmake/* \
                ${libdir}/ibfoonathan_memory.so \
     "
