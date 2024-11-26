@@ -18,9 +18,12 @@ inherit pkgconfig qprebuilt cmake
 
 EXTRA_OECMAKE = " -DUSE_CONSOLE=ON \
     -DUSE_INSTALLED_COMMONAPI=ON \
+    -DCMAKE_INSTALL_PREFIX=/cv2x_extra \
     "
 
 FILESPATH =+ "${WORKSPACE}:"
 FILES_SOLIBSDEV = ""
-FILES:${PN} += "${libdir}/*.so"
+FILES:${PN} += "/cv2x_extra/lib/*"
+FILES:${PN}-dev = "/cv2x_extra/include/* "
 
+SYSROOT_DIRS:append = "/cv2x_extra"

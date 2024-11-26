@@ -16,15 +16,23 @@ S = "${WORKDIR}/cv2x/cv2x-opensource/cv2x-remote-api"
 inherit pkgconfig cmake systemd
 
 EXTRA_OECMAKE = " \
+    -DCMAKE_INSTALL_PREFIX=/cv2x_extra \
     -DTARGET=SERVER \
     -DUSE_CONSOLE=ON \
     -DUSE_INSTALLED_COMMONAPI=ON \
-    -DSYS_INCLUDE=${RECIPE_SYSROOT}/usr/include \
+    -DSYS_INCLUDE=${RECIPE_SYSROOT}/cv2x_extra/include \
 "
 
 
 FILESPATH =+ "${WORKSPACE}:"
-FILES:${PN} += "${systemd_unitdir}"
+FILES:${PN} += "${systemd_unitdir} \
+                /cv2x_extra/lib/* \
+                /cv2x_extra/bin/* \
+"
 FILES_SOLIBSDEV = ""
-FILES:${PN} += "${libdir}/*.so"
+SYSROOT_DIR:append = "/cv2x_extra"
 
+do_install:append() {
+    rm -f ${D}/cv2x_extra/include
+    rm -f ${D}/cv2x_extra/share
+}
