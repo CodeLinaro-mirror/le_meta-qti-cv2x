@@ -8,8 +8,9 @@ inherit packagegroup
 CV2X_ITS ?= "${@bb.utils.contains_any('MACHINE_FEATURES', ['external-ap', 'qti-external-ap'], "True", "False", d)}"
 CV2X_ITS:sa525m = "${@bb.utils.contains_any('MACHINE_FEATURES', [ 'qti-cv2x', 'qti-wwan-plus-cv2x' ], 'True', 'False',d)}"
 
-# Enable cv2x remote api for emmc pvm-only flavor on sa525m
-CV2X_REMOTE = "True"
+# Enable cv2x extra(remote api and splits) for pvm-only flavor on sa525m
+CV2X_EXTRA ?= "False"
+CV2X_EXTRA:sa525m = "${@bb.utils.contains_any('MACHINE_FEATURES', 'qti-vm-host qti-vm-guest emmc-boot', 'False', 'True', d)}"
 PROVIDES = "${PACKAGES}"
 PACKAGES = ' \
     packagegroup-qti-cv2x \
@@ -25,7 +26,8 @@ RDEPENDS:${PN} = "\
 
 RDEPENDS:packagegroup-qti-telematics-cv2x = "\
     cv2x-proxy \
-    ${@oe.utils.conditional('CV2X_REMOTE', 'True', 'cv2x-remote-api', '', d)} \
+    ${@oe.utils.conditional('CV2X_EXTRA', 'True', 'cv2x-remote-api', '', d)} \
+    ${@oe.utils.conditional('CV2X_EXTRA', 'True', 'splits', '', d)} \
     ${@oe.utils.conditional('CV2X_ITS', 'True', '${MLPREFIX}packagegroup-qti-telematics-cv2x-its', '', d)} \
     "
 
